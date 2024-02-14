@@ -4,7 +4,7 @@ Este es un proyecto de ERP (Enterprise Resource Planning) desarrollado con JavaF
 
 ## Características 🚀
 
-- Gestión de proyectos: Permite a los usuarios crear, editar y eliminar proyectos en su portafolio.
+- Gestión de proyectos: Permite al usuario crear, editar y eliminar proyectos en su portafolio.
 - Subida de imágenes: Permite a los usuarios cargar imágenes relacionadas con sus proyectos.
 - Interfaz de usuario intuitiva: Utiliza JavaFX para proporcionar una interfaz gráfica de usuario moderna y fácil de usar.
 
