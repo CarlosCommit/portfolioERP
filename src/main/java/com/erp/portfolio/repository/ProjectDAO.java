@@ -5,6 +5,7 @@ import com.erp.portfolio.entity.ResponseQuery;
 import com.erp.portfolio.handle.HandleQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -26,7 +27,7 @@ public class ProjectDAO {
     private final HandleQuery handleQuery;
     private static final Logger log = LoggerFactory.getLogger(ProjectDAO.class);
 
-    public ProjectDAO(DataSource dataSource, HandleQuery handleQuery) {
+    public ProjectDAO(@Qualifier("mysqlProjectsDataSource") DataSource dataSource, HandleQuery handleQuery) {
         this.dataSource = dataSource;
         this.handleQuery = handleQuery;
     }

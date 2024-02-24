@@ -5,6 +5,7 @@ import com.erp.portfolio.handle.HandleQuery;
 import com.erp.portfolio.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -18,11 +19,11 @@ import java.sql.SQLException;
 public class LoginDAO {
 
     private final DataSource dataSource;
-    private static final String SELECT_USER_DB = "SELECT * PORTFOLIO.USERS WHERE username = ? AND password = ?";
+    private static final String SELECT_USER_DB = "SELECT * FROM PORTFOLIO.USER WHERE username = ? AND password = ?";
     private final HandleQuery handleQuery;
     private static final Logger log = LoggerFactory.getLogger(LoginDAO.class);
 
-    public LoginDAO(DataSource dataSource, HandleQuery handleQuery) {
+    public LoginDAO(@Qualifier("mysqlProjectsDataSource") DataSource dataSource, HandleQuery handleQuery) {
         this.dataSource = dataSource;
         this.handleQuery = handleQuery;
     }

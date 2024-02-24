@@ -13,7 +13,7 @@ public class DataSourceConfiguration {
     private final String username;
     private final String url;
 
-    public DataSourceConfiguration(@Value("${datasource.classnamedriver}") String classNameDriver,@Value("${datasource.password}") String password,
+    public DataSourceConfiguration(@Value("${datasource.class}") String classNameDriver,@Value("${datasource.password}") String password,
                                    @Value("${datasource.username}")String username, @Value("${datasource.url}")String url) {
         this.classNameDriver = classNameDriver;
         this.password = password;
@@ -31,5 +31,6 @@ public class DataSourceConfiguration {
                 .username(username)
                 .build();
     }
+
 
 }

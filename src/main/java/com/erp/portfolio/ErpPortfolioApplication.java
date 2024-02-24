@@ -28,7 +28,7 @@ public class ErpPortfolioApplication extends Application {
 
 	public void prepareSceneLogin(Stage stage) throws IOException {
 		FXMLLoader fmxl = new FXMLLoader(getClass().getResource("/login/Login.fxml"));
-		//fmxl.setControllerFactory(context::getBean);
+		fmxl.setControllerFactory(context::getBean);
 
 		Scene scene = new Scene(fmxl.load());
 		stage.setTitle("Management Portfolio - Login");
