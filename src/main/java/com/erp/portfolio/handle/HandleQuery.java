@@ -19,4 +19,14 @@ public class HandleQuery {
     {
         return ResponseQuery.builder().status(-10).message(message).rowsAffected(0).build();
     }
+
+    public ResponseQuery handleSuccessUpdate(String message,Integer rowsAffected)
+    {
+        return ResponseQuery.builder().status(0).message(message).rowsAffected(rowsAffected).build();
+    }
+    public ResponseQuery handleFailUpdate(String message,Integer rowsAffected)
+    {
+        return ResponseQuery.builder().status(-10).message(message).rowsAffected(rowsAffected).build();
+    }
+
 }
