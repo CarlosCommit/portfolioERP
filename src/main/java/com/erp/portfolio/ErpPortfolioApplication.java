@@ -8,6 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class ErpPortfolioApplication extends Application {
 
@@ -20,6 +22,11 @@ public class ErpPortfolioApplication extends Application {
 	public void start(Stage stage) throws Exception {
 
 		context = SpringApplication.run(ErpPortfolioApplication.class);
+		this.prepareSceneLogin(stage);
+
+	}
+
+	public void prepareSceneLogin(Stage stage) throws IOException {
 		FXMLLoader fmxl = new FXMLLoader(getClass().getResource("/login/Login.fxml"));
 		//fmxl.setControllerFactory(context::getBean);
 
