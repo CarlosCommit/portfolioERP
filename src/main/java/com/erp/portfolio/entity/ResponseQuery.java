@@ -11,4 +11,5 @@ public class ResponseQuery {
     private Integer status;
     private Integer rowsAffected;
     private String message;
+    private Object payload;
 }

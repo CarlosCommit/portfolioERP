@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 public class HandleQuery {
 
 
-    public ResponseQuery handleSuccessSelect(String message)
+    public ResponseQuery handleSuccessSelect(String message,Object payload)
     {
-        return ResponseQuery.builder().status(0).message(message).rowsAffected(0).build();
+        return ResponseQuery.builder().status(0).message(message).rowsAffected(0).payload(payload).build();
     }
     public ResponseQuery handleFailSelect(String message)
     {
