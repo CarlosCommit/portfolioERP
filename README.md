@@ -2,6 +2,8 @@
 
 Este es un proyecto de ERP (Enterprise Resource Planning) desarrollado con JavaFX integrado con Spring Boot. Está diseñado para gestionar un portafolio, permitiendo a los usuarios subir proyectos, imágenes y realizar diversas acciones relacionadas con la gestión de su portafolio profesional.
 
+Termino siendo bastante interesante el proyecto, al combinar ambas tecnologias pude tener un bean de escena y stage actual que por lo que vi en documentaciones es bastante tedioso y codigo de mala practica tenerlo siempre presente ya que el init de los controladores se ejecutan antes de que la escena se setee completamente y para obtenerlo se requiere una accion desde la interfaz luego del metodo init. Pero con spring se pudo configurar un bean singleton para ir registrando la escena y stage cada vez que cambien la cual necesitaba para capturar clicks en la escena y deshabilitar la seleccion de filas de una tabla, lo cual presento el mismo problema de la ejecucion del metodo init antes de que se cargue correctamente la escena en el bean pero gracias a que los controller tambien son beans se pudo obtener la instancia y ejecutar el metodo que agrega un handle event al scene.
+
 ## Características 🚀
 
 - Gestión de proyectos: Permite al usuario crear, editar y eliminar proyectos en su portafolio.
