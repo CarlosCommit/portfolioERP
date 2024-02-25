@@ -1,5 +1,6 @@
 package com.erp.portfolio.repository;
 
+import com.erp.portfolio.controller.ProjectController;
 import com.erp.portfolio.entity.Project;
 import com.erp.portfolio.entity.ResponseQuery;
 import com.erp.portfolio.handle.HandleQuery;
@@ -9,9 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class ProjectDAO {
@@ -23,6 +24,7 @@ public class ProjectDAO {
     private static final String DELETE_PROJECT = "DELETE FROM PORTFOLIO.PROJECTS WHERE id = ?";
     private static final String UPDATE_PROJECT = "UPDATE PORTFOLIO.PROJECTS SET title = ?, description = ? , repo = ? WHERE ID = ? ";
 
+    private static final String SELECT_ALL_PROJECT = "SELECT * FROM PORTFOLIO.PROJECTS";
 
     private final HandleQuery handleQuery;
     private static final Logger log = LoggerFactory.getLogger(ProjectDAO.class);
@@ -88,7 +90,29 @@ public class ProjectDAO {
     }
 
     public ResponseQuery getProjects() {
-        return null;
+        List<Project> projects = new ArrayList<>();
+        try(
+                Connection conn = dataSource.getConnection();
+                Statement statement = conn.createStatement();
+                )
+        {
+            ResultSet resultSet = statement.executeQuery(SELECT_ALL_PROJECT);
+            while(resultSet.next())
+            {
+                Project project = new Project();
+                project.setId(resultSet.getInt("project_id"));
+                project.setTitle(resultSet.getString("title"));
+                project.setDescription(resultSet.getString("description"));
+                project.setUrlRepo(resultSet.getString("repo"));
+                projects.add(project);
+            }
+            return handleQuery.handleSuccessSelect("Select projects ok",projects);
+        }catch (SQLException e)
+        {
+            log.error("Error select projects: {}",e.getMessage(),e);
+            return handleQuery.handleFailSelect(e.getMessage());
+        }
+
     }
 
 }

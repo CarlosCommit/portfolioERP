@@ -4,6 +4,6 @@ import com.erp.portfolio.entity.ResponseQuery;
 
 public interface ProjectService {
 
-
+    ResponseQuery getProjectsAll();
 
 }
